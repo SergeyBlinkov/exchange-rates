@@ -23,11 +23,19 @@ export default function Dashboard() {
         setExcRate(res.data.rates)
       });
   }, []);
-const calc = () =>{
-  excRate[`${exc1}`] > excRate[`${exc2}`]? number = (excRate[`${exc2}`] / excRate[`${exc2}`]) * (excRate[`${exc1}`] / excRate[`${exc2}`]):
-   number = (excRate[`${exc1}`] / excRate[`${exc1}`]) * (excRate[`${exc2}`] / excRate[`${exc1}`])
-  console.log(number)
- return number.toFixed(2)
+const calc = (d) =>{
+  if(d[`${exc1}`] > d[`${exc2}`])
+   {
+    number = ((d[`${exc2}`] / d[`${exc2}`]) 
+  / (d[`${exc1}`] / d[`${exc2}`]))
+  }
+
+   else {
+     number = (excRate[`${exc1}`] / excRate[`${exc1}`])
+    * (excRate[`${exc2}`] / excRate[`${exc1}`])
+  }
+  
+ return number.toFixed(4)
 }
     // exc1 === exc2? console.log('yes'): console.log('no')
 
@@ -57,7 +65,7 @@ console.log(excRate[`${exc1}`])
                 </select>
               </div>
               <div>
-                <span className="filterBar__price">{calc()}</span>
+                <span className="filterBar__price">{calc(excRate)}</span>
               </div>
             </div>
           </div>

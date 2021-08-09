@@ -8,7 +8,7 @@ export default function Result(exchange) {
         <tr key={p}>
           <th>{i++}</th>
           <th>{p[0]}</th>
-          <th>{p[1]}</th>
+          <th>{(parseInt(p[1] * 1000)/ 1000)}</th>
         </tr>
       );
     
