@@ -25,12 +25,7 @@ function App() {
 
   return (
 <Router>
-    <div>
-      {/* <form action='/dashboard'>
-    <Button variant='primary'>Click to get Exchange Rates</Button>
-    </form> */}
-
-      
+    <div>     
         <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/dashboard" component={Dashboard} />
