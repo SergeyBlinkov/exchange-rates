@@ -9,8 +9,10 @@ import Fill from "../Fill";
 export default function Dashboard() {
   debugger;
   const [excRate, setExcRate] = useState([]);
-  const [exc1, setExc1] = useState([]);
-  const [exc2, setExc2] = useState("");
+  const [exc1, setExc1] = useState('AED');
+  const [exc2, setExc2] = useState('AED');
+
+  let number = 0
 
   useEffect(() => {
     axios
@@ -18,13 +20,18 @@ export default function Dashboard() {
         "http://api.exchangeratesapi.io/v1/latest?access_key=29a0c4055331c1298d783f23037ff432"
       )
       .then((res) => {
-        setExc1(res.data.rates)
-        setExcRate(Object.entries(res.data.rates));
+        setExcRate(res.data.rates)
       });
   }, []);
+const calc = () =>{
+  excRate[`${exc1}`] > excRate[`${exc2}`]? number = (excRate[`${exc2}`] / excRate[`${exc2}`]) * (excRate[`${exc1}`] / excRate[`${exc2}`]):
+   number = (excRate[`${exc1}`] / excRate[`${exc1}`]) * (excRate[`${exc2}`] / excRate[`${exc1}`])
+  console.log(number)
+ return number.toFixed(2)
+}
+    // exc1 === exc2? console.log('yes'): console.log('no')
 
-  console.log(exc1.AED = exc2? true : false)
-console.log(exc2)
+console.log(excRate[`${exc1}`])
   return (
     <div>
       <div>
@@ -41,16 +48,16 @@ console.log(exc2)
             <div className="filterBar">
               <div className="filterBar__item">
               From
-                <select onChange={(e)=> {console.log(e.target.value)}}>  
+                <select onChange={(e)=> {setExc1(e.target.value)}}>  
                 {Fill(excRate)}
                 </select>
                 To
-                <select onChange={(e)=> {console.log(e.target.value)}}>
+                <select onChange={(e)=> {setExc2(e.target.value)}}>
                 {Fill(excRate)}
                 </select>
               </div>
               <div>
-                <span className="filterBar__price">number</span>
+                <span className="filterBar__price">{calc()}</span>
               </div>
             </div>
           </div>

@@ -1,11 +1,9 @@
 import React from "react";
 
 export default function Fill(exchange) {
-  
-  return exchange.map((p) => {
-    
-return <option key={p}>{p[0]}</option>
-    
-  }
-  )
+  return Object.keys(
+    exchange).map((p) => {
+      return <option key={p}>{p}</option>;
+    })
+  ;
 }

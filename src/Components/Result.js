@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Result(exchange) {
   let i = 1;
-  return exchange.map((p) => {
+  return Object.entries(exchange).map((p) => {
     
       return (
         <tr key={p}>
