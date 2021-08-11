@@ -34,6 +34,7 @@
 .filterBar__price{
   display: flex;
   flex-direction: row;
+  background-color: rgb(137, 250, 212);
 }
 .filterBar__item {
   display: flex;

@@ -3,3 +3,11 @@
     flex-direction: column;
     align-items: center;
 }
+#err{
+    color:rgb(241, 64, 64);
+}
+.logform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Login.css";
 import PropTypes from "prop-types";
 
-
 async function loginUser(credentials) {
   return fetch("http://localhost:8080/login", {
     method: "POST",
@@ -23,11 +22,18 @@ export default function Login({ setToken }) {
       user: username.length,
       pass: password.length,
     };
-    if (dataUser.user < 1) {
-      return alert("username is required");
-    } else if (dataUser.pass < 1) {
-      return alert("password is required");
-    } else {
+    if (dataUser.user < 1 && dataUser.pass < 1) {
+      document.getElementById("err").innerHTML =
+        "username and password is required";
+    } else if (dataUser.user < 1) {
+      document.getElementById("err").innerHTML =
+        "username is required";
+    }
+    else if (dataUser.pass < 1) {
+      return (document.getElementById("err").innerHTML =
+        "password is required");
+    } 
+    else {
       const token = await loginUser(username, password);
       setToken(token);
       window.location.reload();
@@ -37,7 +43,7 @@ export default function Login({ setToken }) {
   return (
     <div className="login-wrapper">
       <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='logform'>
         <label>
           <p>Username</p>
           <input type="text" onChange={(e) => setUsername(e.target.value)} />
@@ -50,6 +56,7 @@ export default function Login({ setToken }) {
           />
         </label>
         <div>
+          <p id="err"></p>
           <input type="submit" />
         </div>
       </form>
