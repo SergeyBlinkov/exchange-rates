@@ -9,10 +9,10 @@ import Fill from "../Fill";
 export default function Dashboard() {
   debugger;
   const [excRate, setExcRate] = useState([]);
-  const [exc1, setExc1] = useState('AED');
-  const [exc2, setExc2] = useState('AED');
+  const [exc1, setExc1] = useState("AED");
+  const [exc2, setExc2] = useState("AED");
 
-  let number = 0
+  let number = 0;
 
   useEffect(() => {
     axios
@@ -20,26 +20,30 @@ export default function Dashboard() {
         "http://api.exchangeratesapi.io/v1/latest?access_key=29a0c4055331c1298d783f23037ff432"
       )
       .then((res) => {
-        setExcRate(res.data.rates)
+        setExcRate(res.data.rates);
       });
   }, []);
-const calc = (d) =>{
-  if(d[`${exc1}`] > d[`${exc2}`])
-   {
-    number = ((d[`${exc2}`] / d[`${exc2}`]) 
-  / (d[`${exc1}`] / d[`${exc2}`]))
-  }
+  const calc = (d) => {
+    if (d[`${exc1}`] > d[`${exc2}`]) {
+      number = d[`${exc2}`] / d[`${exc2}`] / (d[`${exc1}`] / d[`${exc2}`]);
+    } else {
+      number =
+        (excRate[`${exc1}`] / excRate[`${exc1}`]) *
+        (excRate[`${exc2}`] / excRate[`${exc1}`]);
+    }
 
-   else {
-     number = (excRate[`${exc1}`] / excRate[`${exc1}`])
-    * (excRate[`${exc2}`] / excRate[`${exc1}`])
-  }
-  
- return number.toFixed(4)
-}
-    // exc1 === exc2? console.log('yes'): console.log('no')
+    return number.toFixed(3);
+  };
+  const BtnSwitch = () => {
+    setExc1(exc2);
+    setExc2(exc1);
+    let list1 = document.getElementById('list1')
+    let list2 = document.getElementById('list2')
+    list1.value = exc2
+    list2.value = exc1
+    
+  };
 
-console.log(excRate[`${exc1}`])
   return (
     <div>
       <div>
@@ -51,19 +55,33 @@ console.log(excRate[`${exc1}`])
             </Button>
           </div>
           <div>
-            <h2>Here Filter by All Exchange Rate</h2>
+            <h2 style={{ textAlign: "center" }}>Here Filter by All Currency</h2>
 
             <div className="filterBar">
               <div className="filterBar__item">
-              From
-                <select onChange={(e)=> {setExc1(e.target.value)}}>  
-                {Fill(excRate)}
+                From
+                <select
+                  id="list1"
+                  onChange={(e) => {
+                    setExc1(e.target.value);
+                  }}
+                >
+                  {Fill(excRate)}
                 </select>
                 To
-                <select onChange={(e)=> {setExc2(e.target.value)}}>
-                {Fill(excRate)}
+                <select
+                id="list2"
+                  onChange={(e) => {
+                    setExc2(e.target.value);
+                  }}
+                >
+                  {Fill(excRate)}
                 </select>
               </div>
+
+              <Button variant="secondary" onClick={BtnSwitch} size="sm">
+                switch currency
+              </Button>
               <div>
                 <span className="filterBar__price">{calc(excRate)}</span>
               </div>
@@ -73,7 +91,7 @@ console.log(excRate[`${exc1}`])
             <thead>
               <tr>
                 <th>#</th>
-                <th>Exchange Rate</th>
+                <th>Currency</th>
                 <th>Value</th>
               </tr>
             </thead>
