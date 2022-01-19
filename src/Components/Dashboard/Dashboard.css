@@ -1,0 +1,71 @@
+.menu {
+    border: 1px solid black;
+    margin: 5px auto;
+    width: 500px;
+    border-radius: 5px;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    align-items: center;
+    margin-right: 5px;
+}
+.btn {
+    background-clip: text;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 10px;
+    background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 475ms ease;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+.btn:hover {
+    
+    font-weight: 700;
+    background-position: 0 100%;
+}
+.mainHead {
+    background-clip: text;
+    width: 250px;
+    font-size: 25px;
+    margin-left: 10px;
+    background: linear-gradient(to right, midnightblue, rgb(12, 152, 207) 50%, royalblue 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 475ms ease;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+.mainHead:hover{
+    background-position: 0 100%;
+    font-weight: 700;
+}
+.mainHead:hover::after {
+    width: 550px;
+}
+.switchButton {
+    background-clip: text;
+    width: 100px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 10px;
+    background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 475ms ease;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+.switchButton:hover {
+    background-position: 0 100%;
+    font-weight: 700;
+}

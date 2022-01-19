@@ -5,6 +5,7 @@ import "./../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Table } from "react-bootstrap";
 import Fill from "../Fill";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   debugger;
@@ -37,29 +38,25 @@ export default function Dashboard() {
   const BtnSwitch = () => {
     setExc1(exc2);
     setExc2(exc1);
-    let list1 = document.getElementById('list1')
-    let list2 = document.getElementById('list2')
-    list1.value = exc2
-    list2.value = exc1
-    
+    let list1 = document.getElementById("list1");
+    let list2 = document.getElementById("list2");
+    list1.value = exc2;
+    list2.value = exc1;
   };
 
   return (
     <div>
-      <div>
-        <h2 className="mainHead"> Exchange Rates </h2>
-        <div>
-          <div className="d-grid gap-2">
-            <Button variant="primary" size="lg" href="/">
-              Go back to main
-            </Button>
-          </div>
-          <div>
-            <h2 style={{ textAlign: "center" }}>Here Filter by All Currency</h2>
+      
+        <div className="menu">
+          <div className="header">
+          <h2 className="mainHead"> Exchange Rates </h2>
 
+          <button className="btn">Go back to main</button>
+</div>
+          <div>
             <div className="filterBar">
               <div className="filterBar__item">
-                From
+                <p>from</p>
                 <select
                   id="list1"
                   onChange={(e) => {
@@ -68,9 +65,9 @@ export default function Dashboard() {
                 >
                   {Fill(excRate)}
                 </select>
-                To
+                <p>to</p>
                 <select
-                id="list2"
+                  id="list2"
                   onChange={(e) => {
                     setExc2(e.target.value);
                   }}
@@ -79,9 +76,7 @@ export default function Dashboard() {
                 </select>
               </div>
 
-              <Button variant="secondary" onClick={BtnSwitch} size="sm">
-                switch currency
-              </Button>
+              <button className="switchButton">switch currency</button>
               <div>
                 <span className="filterBar__price">{calc(excRate)}</span>
               </div>
@@ -98,7 +93,7 @@ export default function Dashboard() {
             <tbody>{Result(excRate)}</tbody>
           </Table>
         </div>
-      </div>
+      
     </div>
   );
 }

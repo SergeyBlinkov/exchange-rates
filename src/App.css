@@ -4,17 +4,7 @@
   font-size: 2555;
   width: 20px;
 }
-.mainHead {
-  display:flex;
- 
-  justify-content: center;
-  background-color: aquamarine;
-  height: 80px;
-  margin: 0 auto;
-  margin-bottom: 15px;
-  align-items: center;
-  
-}
+
 
 .main-btn {
   display: flex;
@@ -26,19 +16,34 @@
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
+  width: 500px;
   align-items: center;
   border:1px solid black;
-  height: 50px;
+  height: 150px;
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  font-weight: bold;
 }
 .filterBar__price{
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(137, 250, 212);
+  
+ 
 }
 .filterBar__item {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width:70%
+  flex-direction: column;
+  
+  width:100px;
+  height: 120px;
+  border: 1px solid #f69d3c;
+  border-radius: 15px;
+  align-items: center;
+}
+.filterBar__item > select {
+  border-radius: 5px;
+  font-weight: bold;
+  margin:0px 15px;
+  background: none;
+  border: 1px solid #f69d3c;
+}
+.filterBar__item > p {
+  margin-bottom: 5px ;
 }
